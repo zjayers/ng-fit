@@ -18,5 +18,5 @@ export const environment = {
     projectId: 'ng-fit-52284',
     storageBucket: 'ng-fit-52284.appspot.com',
     messagingSenderId: '74394178460',
-  }
+  },
 };

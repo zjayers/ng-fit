@@ -1,26 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Exercise } from './exercise.model';
-import { Subject } from 'rxjs';
+import { Subject, of } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { map, catchError } from 'rxjs/operators';
+import { UiService } from '../shared/ui.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TrainingService {
-  constructor() {}
+  constructor(
+    private firestore: AngularFirestore,
+    private uiService: UiService
+  ) {}
 
-  private availExercises: Exercise[] = [
-    { id: 'crunches', name: 'Crunches', duration: 30, calories: 8 },
-    { id: 'touch-toes', name: 'Touch Toes', duration: 180, calories: 15 },
-    { id: 'side-lunges', name: 'Side Lunges', duration: 120, calories: 18 },
-    { id: 'burpees', name: 'Burpees', duration: 60, calories: 8 },
-  ];
-
-  private runningEx: Exercise;
   exChanged = new Subject<Exercise>();
-  completedExs: Exercise[] = [];
 
-  getExercises() {
-    return this.availExercises.slice();
+  private availExercises: Exercise[] = [];
+  private runningEx: Exercise;
+
+  fetchAvailableExercises() {
+    return this.firestore
+      .collection('availableExercises')
+      .snapshotChanges()
+      .pipe(
+        map((docArray) => {
+          return (this.availExercises = docArray.map((doc) => {
+            const data: any = doc.payload.doc.data();
+            return {
+              id: doc.payload.doc.id,
+              ...data,
+            };
+          }));
+        }),
+        catchError((err) => {
+          this.uiService.showSnackBar(
+            'Fetching exercises failed, please try again later.'
+          );
+          return of(err);
+        })
+      );
   }
 
   startEx(selectedId: string) {
@@ -29,7 +48,7 @@ export class TrainingService {
   }
 
   completeEx() {
-    this.completedExs.push({
+    this.addDataToDatabase({
       ...this.runningEx,
       date: new Date(),
       state: 'completed',
@@ -39,7 +58,7 @@ export class TrainingService {
   }
 
   cancelEx(progress: number) {
-    this.completedExs.push({
+    this.addDataToDatabase({
       ...this.runningEx,
       duration: this.runningEx.duration * (progress / 100),
       calories: this.runningEx.calories * (progress / 100),
@@ -54,7 +73,24 @@ export class TrainingService {
     return { ...this.runningEx };
   }
 
-  getAllExs() {
-    return this.completedExs.slice();
+  fetchCompletedOrCancelledExercises() {
+    return this.firestore
+      .collection('finishedExs')
+      .valueChanges()
+      .pipe(
+        map((exercises) => {
+          return exercises.map((exercise: any) => {
+            exercise.date = exercise.date.toDate();
+            return exercise;
+          });
+        }),
+        catchError((err) => {
+          return of(err);
+        })
+      );
+  }
+
+  private addDataToDatabase(exercise: Exercise) {
+    this.firestore.collection('finishedExs').add(exercise);
   }
 }
