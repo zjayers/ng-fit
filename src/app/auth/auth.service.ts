@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth/';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UiService } from '../shared/ui.service';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../app.reducer';
+import { START_LOADING, STOP_LOADING } from '../shared/types';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +19,8 @@ export class AuthService {
   constructor(
     private router: Router,
     private fireAuth: AngularFireAuth,
-    private snackBar: MatSnackBar,
-    private uiService: UiService
+    private uiService: UiService,
+    private store: Store<{ ui: fromApp.State }>
   ) {}
 
   private isAuthenticated = false;
@@ -37,27 +40,26 @@ export class AuthService {
   }
 
   registerUser(authData: AuthData) {
-    this.uiService.loadingStateChanged.next(true);
+    this.store.dispatch({ type: START_LOADING });
     this.fireAuth
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then(() => {
-        this.uiService.loadingStateChanged.next(false);
+        this.store.dispatch({ type: STOP_LOADING });
       })
       .catch((err) => {
-        this.uiService.loadingStateChanged.next(false);
-        this.uiService.showSnackBar(err.message);
+        this.store.dispatch({ type: STOP_LOADING });
       });
   }
 
   login(authData: AuthData) {
-    this.uiService.loadingStateChanged.next(true);
+    this.store.dispatch({ type: START_LOADING });
     this.fireAuth
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then(() => {
-        this.uiService.loadingStateChanged.next(false);
+        this.store.dispatch({ type: STOP_LOADING });
       })
       .catch(() => {
-        this.uiService.loadingStateChanged.next(false);
+        this.store.dispatch({ type: STOP_LOADING });
         this.uiService.showSnackBar('Invalid email or password');
       });
   }
