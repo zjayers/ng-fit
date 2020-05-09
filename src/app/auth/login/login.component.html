@@ -44,13 +44,13 @@
       >
     </mat-form-field>
     <button
-      *ngIf="!isLoading"
+      *ngIf="(isLoading | async) === false"
       mat-raised-button
       color="primary"
       [disabled]="f.invalid"
     >
       Submit
     </button>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <mat-spinner *ngIf="isLoading | async"></mat-spinner>
   </form>
 </section>

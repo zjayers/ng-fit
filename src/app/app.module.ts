@@ -22,6 +22,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthService } from './auth/auth.service';
 import { TrainingService } from './training/training.service';
 import { UiService } from './shared/ui.service';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { UiService } from './shared/ui.service';
     AngularFirestoreModule,
     SharedModule,
     AuthModule,
+    StoreModule.forRoot({ ui: appReducer }, {}),
   ],
   providers: [AuthService, TrainingService, UiService],
   bootstrap: [AppComponent],
