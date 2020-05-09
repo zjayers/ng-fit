@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ng-fit-52284": {
+      "hosting": {
+        "ng-fit": [
+          "ng-fit-52284"
+        ]
+      }
+    }
+  }
+}

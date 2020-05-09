@@ -36,6 +36,11 @@ import { StopTrainingComponent } from './training/current-training/stop--trainin
 import { AuthService } from './auth/auth.service';
 import { TrainingService } from './training/training.service';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {AngularFireModule} from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -73,6 +78,10 @@ import { MatTableModule } from '@angular/material/table';
     FlexLayoutModule,
     MatProgressSpinnerModule,
     FormsModule,
+    MatSortModule,
+    MatPaginatorModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent, TrainingService],

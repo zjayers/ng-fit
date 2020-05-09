@@ -46,7 +46,6 @@ export class AuthService {
 
   private authSuccess() {
     this.authChange.next(true);
-    debugger;
     this.router.navigateByUrl('training');
   }
 }
