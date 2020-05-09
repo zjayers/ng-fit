@@ -22,7 +22,6 @@ export class CurrentTrainingComponent implements OnInit {
   }
 
   startOrResumeTimer() {
-    debugger;
     const step = (this.trainingService.getRunningEx().duration / 100) * 1000;
     this.timer = setInterval(() => {
       this.progress = this.progress + 1;
@@ -40,7 +39,6 @@ export class CurrentTrainingComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
       if (result === 'true') {
         console.log('emitting');
         this.trainingService.cancelEx(this.progress);
