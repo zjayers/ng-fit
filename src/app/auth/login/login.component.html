@@ -43,8 +43,14 @@
         >Field must be at least 6 characters long</mat-error
       >
     </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="f.invalid">
+    <button
+      *ngIf="!isLoading"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
       Submit
     </button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
   </form>
 </section>
