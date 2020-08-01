@@ -1,27 +1,52 @@
-# NgFit
+<h1 align="center">Welcome to ng-fit 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/node-%3E%3D12.18.3-blue.svg" />
+  <img src="https://img.shields.io/badge/npm-%3E%3D6.14.7-blue.svg" />
+  <a href="https://github.com/zjayers/ng-fit#readme" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://github.com/zjayers/ng-fit/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  <a href="https://github.com/zjayers/ng-fit/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/zjayers/ng-fit" />
+  </a>
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+### 🏠 [Homepage](https://zjayers.github.io/ng-fit/)
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- node >=12.18.3
+- npm >=6.14.7
 
-## Code scaffolding
+## Install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```sh
+npm install
+```
 
-## Build
+## Author
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+👤 **Zach Ayers**
 
-## Running unit tests
+- Website: https://www.zachayers.io
+- Github: [@zjayers](https://github.com/zjayers)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🤝 Contributing
 
-## Running end-to-end tests
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/zjayers/ng-fit/issues). You can also take a look at the [contributing guide](https://github.com/zjayers/ng-fit/blob/master/CONTRIBUTING.md).
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Show your support
 
-## Further help
+Give a ⭐️ if this project helped you!
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## 📝 License
+
+Copyright © 2020 [Zach Ayers](https://github.com/zjayers).<br />
+This project is [MIT](https://github.com/zjayers/ng-fit/blob/master/LICENSE) licensed.
+
+---
+
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
