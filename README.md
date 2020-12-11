@@ -1,8 +1,7 @@
 # Ng-Fit
-[![GitHub Release](https://img.shields.io/github/release/zjayers/ng-fit.svg?style=flat)]()
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/zjayers/ng-fit.svg?style=flat)]()
+[![GitHub Release](https://img.shields.io/github/release/zjayers/ng-fit.svg?style=flat)](https://github.com/zjayers/ng-fit/releases)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/zjayers/ng-fit.svg?style=flat)](https://github.com/zjayers/ng-fit/pulls)
 [![Issues](https://img.shields.io/github/issues-raw/zjayers/ng-fit.svg?maxAge=25000)](https://github.com/zjayers/ng-fit/issues)
-[![MIT License](https://img.shields.io/apm/l/atomic-ui.svg?)](https://github.com/zjayers/ng-fit/blob/master/LICENSEs)
 
 ## Description
 
